@@ -2,31 +2,38 @@ const choices = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
 
-// function game() {
-//     for (let i = 0; i < 5; i++) {
-//         playRound();
-//     }
-//     results();
-// }
+function game() {
+    const buttons = document.querySelectorAll('.btn');
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', () => {
+            playRound(buttons[i].id);
+        })
+    };
+    //     for (let i = 0; i < 5; i++) {
+    //         playRound();
+    //     }
+    //     results();
+};
 
-function playRound() {
-    const playerSelection = playerChoice();
+function playRound(playerChoice) {
+    const playerSelection = playerChoice;
     const computerSelection = compChoice();
     const winner = checkWinner(playerSelection, computerSelection);
     console.log("player: " + playerSelection);
     console.log("computer: " + computerSelection);
     console.log(winner);
-}
+};
 
-function playerChoice() {
-    let input = prompt("Choose either rock, paper or scissors");
-    input = input.toLowerCase();
-    return input;
-}
+// function playerChoice() {
+//     // let input = prompt("Choose either rock, paper or scissors");
+//     // input = input.toLowerCase();
+//     let input = 'rock';
+//     return input;
+// }
 
 function compChoice() {
     return choices[Math.floor(Math.random() * choices.length)];
-}
+};
 
 function checkWinner(choiceP, choiceC) {
     if (
@@ -43,7 +50,7 @@ function checkWinner(choiceP, choiceC) {
         computerScore++;
         return `You lose, ${choiceC} beats ${choiceP}`;
     }
-}
+};
 
 function results() {
     console.log(`Player score: ${playerScore}`);
@@ -57,7 +64,7 @@ function results() {
     else {
         console.log("It's a draw!");
     }
-}
+};
 
-// game();
-playRound();
+game();
+

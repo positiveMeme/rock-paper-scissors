@@ -2,12 +2,12 @@ const choices = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        playRound();
-    }
-    results();
-}
+// function game() {
+//     for (let i = 0; i < 5; i++) {
+//         playRound();
+//     }
+//     results();
+// }
 
 function playRound() {
     const playerSelection = playerChoice();
@@ -59,4 +59,5 @@ function results() {
     }
 }
 
-game();
+// game();
+playRound();

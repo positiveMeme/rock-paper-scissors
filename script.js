@@ -1,19 +1,18 @@
 const choices = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
+let tie = 0;
+let totalRounds = 0;
 
-function game() {
-    const buttons = document.querySelectorAll('.btn');
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener('click', () => {
-            playRound(buttons[i].id);
-        })
-    };
-    //     for (let i = 0; i < 5; i++) {
-    //         playRound();
-    //     }
-    //     results();
-};
+
+const buttons = document.querySelectorAll('.btn');
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', () => {
+        playRound(buttons[i].id);
+        results();
+    })
+}
+
 
 function playRound(playerChoice) {
     const playerSelection = playerChoice;
@@ -41,30 +40,44 @@ function checkWinner(choiceP, choiceC) {
         (choiceP === "rock" && choiceC === "scissors") ||
         (choiceP === "paper" && choiceC === "rock")) {
         playerScore++;
+        totalRounds++;
         return `You win, ${choiceP} beats ${choiceC}`;
     }
     else if (choiceP === choiceC) {
+        tie++;
+        totalRounds++;
         return "It's a tie!";
     }
     else {
         computerScore++;
+        totalRounds++;
         return `You lose, ${choiceC} beats ${choiceP}`;
     }
 };
 
 function results() {
-    console.log(`Player score: ${playerScore}`);
-    console.log(`Computer score: ${computerScore}`);
-    if (playerScore > computerScore) {
-        console.log("You win!");
-    }
-    else if (playerScore < computerScore) {
-        console.log("You lose!");
+    if (totalRounds < 5) {
+        return;
     }
     else {
-        console.log("It's a draw!");
+        console.log(`Player score: ${playerScore}`);
+        console.log(`Computer score: ${computerScore}`);
+        console.log(`Ties: ${tie}`);
+        if (playerScore > computerScore) {
+            console.log("You win!");
+        }
+        else if (playerScore < computerScore) {
+            console.log("You lose!");
+        }
+        else {
+            console.log("It's a draw!");
+        }
+        disableButton();
     }
 };
 
-game();
-
+function disableButton() {
+    document.getElementById("rock").disabled = true;
+    document.getElementById("paper").disabled = true;
+    document.getElementById("scissors").disabled = true;
+}

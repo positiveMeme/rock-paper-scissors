@@ -5,16 +5,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <title>My Rock Paper Scissors Game!</title>
 </head>
 
 <body>
-    <div class="flex-container">
-        <h1>Rock, Paper, Scissors</h1>
-        <button class="btn" id="rock" type="button">rock</button>
-        <button class="btn" id="paper" type="button">paper</button>
-        <button class="btn" id="scissors" type="button">scissors</button>
+    <div class="container">
+        <div class="flex-container">
+            <h1>Rock, Paper, Scissors</h1>
+            <button class="btn" id="rock" type="button">rock</button>
+            <button class="btn" id="paper" type="button">paper</button>
+            <button class="btn" id="scissors" type="button">scissors</button>
+        </div>
+        <div>
+            <h2>Scores</h2>
+            <p class="round"></p>
+            <p>- - You: <span class="you">0</span> - - Computer: <span class="comp">0</span> - - Ties: <span
+                    class="ties">0</span> - -</p>
+            <p class="result"></p>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 

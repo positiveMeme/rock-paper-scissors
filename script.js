@@ -3,6 +3,11 @@ let playerScore = 0;
 let computerScore = 0;
 let tie = 0;
 let totalRounds = 0;
+const you = document.querySelector('.you');
+const comp = document.querySelector('.comp');
+const ties = document.querySelector('.ties');
+const result = document.querySelector('.result');
+const round = document.querySelector('.round');
 
 
 const buttons = document.querySelectorAll('.btn');
@@ -18,9 +23,13 @@ function playRound(playerChoice) {
     const playerSelection = playerChoice;
     const computerSelection = compChoice();
     const winner = checkWinner(playerSelection, computerSelection);
+    round.textContent = `you: ${playerSelection} - - computer: ${computerSelection} - - ${winner}`;
     console.log("player: " + playerSelection);
     console.log("computer: " + computerSelection);
     console.log(winner);
+    you.textContent = `${playerScore}`;
+    comp.textContent = `${computerScore}`;
+    ties.textContent = `${tie}`
 };
 
 // function playerChoice() {
@@ -60,16 +69,22 @@ function results() {
         return;
     }
     else {
+        you.textContent = `${playerScore}`;
+        comp.textContent = `${computerScore}`;
+        ties.textContent = `${tie}`
         console.log(`Player score: ${playerScore}`);
         console.log(`Computer score: ${computerScore}`);
         console.log(`Ties: ${tie}`);
         if (playerScore > computerScore) {
+            result.textContent = "You win!";
             console.log("You win!");
         }
         else if (playerScore < computerScore) {
+            result.textContent = "You lose!";
             console.log("You lose!");
         }
         else {
+            result.textContent = "It's a draw!";
             console.log("It's a draw!");
         }
         disableButton();
@@ -81,3 +96,5 @@ function disableButton() {
     document.getElementById("paper").disabled = true;
     document.getElementById("scissors").disabled = true;
 }
+
+
